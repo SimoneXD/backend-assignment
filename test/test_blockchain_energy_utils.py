@@ -1,5 +1,4 @@
 from unittest.mock import patch
-import pytest
 
 from app.blockchain_energy_utils import (
     get_transaction_energy,
@@ -41,7 +40,6 @@ def test_total_energy_per_day_last_x_days(mock_energy_per_block, mock_request):
     mock_energy_per_block.return_value = [
         TransactionEnergy(tx_hash="tx1", size=100, energy_kwh=456.0)
     ]
-    
     result = total_energy_per_day_last_x_days(2)
     assert len(result) == 2
     assert isinstance(result[0], DailyEnergy)

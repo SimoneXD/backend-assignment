@@ -1,13 +1,11 @@
 from flask_cors import CORS
 from flask import Flask
 from strawberry.flask.views import GraphQLView
-from config import Config
 from .query import schema
 
-def create_app(config_class=Config):
+def create_app():
     app = Flask(__name__)
     CORS(app)
-    app.config.from_object(config_class)
 
     app.add_url_rule(
         "/graphql",
